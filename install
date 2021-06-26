@@ -5,6 +5,7 @@ BASE=$(pwd)
 
 if [ -z $DOTFILES ]; then
   echo "setting \$DOTFILES in ~/.zshenv"
+  echo "export DOTFILES=$BASE" >> ~/.zshenv
 else
   echo "\$DOTFILES is already set to $DOTFILES. Aborting."
   exit 1
