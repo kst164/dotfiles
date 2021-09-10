@@ -12,7 +12,7 @@ COMPLETION_WAITING_DOTS="true"
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM="$DOTFILES/zsh/custom"
 
-plugins=(fzf cargo rustup ripgrep)
+plugins=(fzf cargo rust rustup ripgrep)
 
 source $ZSH/oh-my-zsh.sh
 
