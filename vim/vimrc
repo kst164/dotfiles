@@ -176,6 +176,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'jiangmiao/auto-pairs'
     Plug 'sheerun/vim-polyglot'
 
+    " For nand2tetris
+    Plug 'sevko/vim-nand2tetris-syntax'
+
     Plug '/usr/local/opt/fzf'
     Plug 'junegunn/fzf.vim'
 
@@ -196,7 +199,7 @@ let NERDTreeQuitOnOpen=1
 colorscheme molokai
 
 " ALE
-nnoremap <C-a> :ALERename<CR>
+nnoremap <Leader>r :ALERename<CR>
 
 "------------------------------------------------------------
 
