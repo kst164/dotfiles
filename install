@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 cd "$(dirname "${BASH_SOURCE[0]}")"
 BASE=$(pwd)
@@ -11,8 +11,10 @@ else
   exit 1
 fi
 
+ZSH=$BASE/zsh/omz sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-ln -sfv $BASE/vim ~/.vim
-ln -sfv $BASE/zsh/zshrc ~/.zshrc
+# F on macOS should be T on Linux
+ln -sFfv $BASE/vim ~/.vim
+ln -sFfv $BASE/zsh/zshrc ~/.zshrc
 
 vim +PlugInstall +qall

@@ -1,3 +1,0 @@
-[submodule "zsh/omz"]
-	path = zsh/omz
-	url = https://github.com/ohmyzsh/ohmyzsh.git
