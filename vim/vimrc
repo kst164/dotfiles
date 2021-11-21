@@ -157,6 +157,8 @@ let g:ale_linters = {
 \}
 let g:ale_fixers = {
 \  'rust': ['rustfmt'],
+\  'cpp': ['clang-format'],
+\  'c': ['clang-format'],
 \  'javascript': ['eslint', 'prettier'],
 \  'typescript': ['eslint', 'prettier'],
 \  'typescriptreact': ['eslint', 'prettier']
@@ -166,21 +168,24 @@ let g:ale_fix_on_save = 1
 "------------------------------------------------------------
 " vim-plug
 call plug#begin('~/.vim/plugged')
+    " vim usage things
     Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
     Plug 'preservim/nerdcommenter'
     Plug 'itchyny/lightline.vim'
-    Plug 'dense-analysis/ale'
-    "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'tpope/vim-surround'
-    Plug 'rust-lang/rust.vim'
     Plug 'jiangmiao/auto-pairs'
     Plug 'sheerun/vim-polyglot'
 
-    " For nand2tetris
-    Plug 'sevko/vim-nand2tetris-syntax'
-
     Plug '/usr/local/opt/fzf'
     Plug 'junegunn/fzf.vim'
+
+    " dev things
+    Plug 'dense-analysis/ale'
+    Plug 'rust-lang/rust.vim'
+    Plug 'sevko/vim-nand2tetris-syntax'
+
+    " misc
+    Plug 'vimwiki/vimwiki'
 
     " Colorschemes
     Plug 'tomasr/molokai'
