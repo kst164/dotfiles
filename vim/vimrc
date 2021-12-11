@@ -143,6 +143,8 @@ nnoremap <C-L> :nohl<CR><C-L>
 " End of online vimrc, start of mine
 
 
+let mapleader=","
+
 
 " PLUGIN SETTINGS - BEFORE
 
@@ -163,6 +165,8 @@ let g:ale_fixers = {
 \  'typescriptreact': ['eslint', 'prettier']
 \}
 let g:ale_fix_on_save = 1
+
+let g:ale_rust_analyzer_executable = '/home/kartheek/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rust-analyzer'
 
 "------------------------------------------------------------
 " vim-plug
@@ -203,11 +207,9 @@ let NERDTreeQuitOnOpen=1
 colorscheme molokai
 
 " ALE
-nnoremap <Leader>r :ALERename<CR>
+nnoremap <leader>r :ALERename<CR>
 
 "------------------------------------------------------------
-
-let mapleader=","
 
 set scrolloff=15
 
