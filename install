@@ -11,10 +11,10 @@ else
   exit 1
 fi
 
-ZSH=$BASE/zsh/omz sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+ZSH=$BASE/zsh/omz RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # F on macOS should be T on Linux
-ln -sFfv $BASE/vim ~/.vim
-ln -sFfv $BASE/zsh/zshrc ~/.zshrc
+ln -sTfv $BASE/vim ~/.vim
+ln -sTfv $BASE/zsh/zshrc ~/.zshrc
 
 vim +PlugInstall +qall
