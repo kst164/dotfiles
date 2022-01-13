@@ -155,6 +155,7 @@ set noshowmode
 let g:ale_completion_enabled = 1
 let g:ale_linters = {
 \  'rust': ['analyzer', 'cargo', 'rustc'],
+\  'c': ['clangd'],
 \}
 let g:ale_fixers = {
 \  'rust': ['rustfmt'],
@@ -164,9 +165,8 @@ let g:ale_fixers = {
 \  'typescript': ['eslint', 'prettier'],
 \  'typescriptreact': ['eslint', 'prettier']
 \}
-let g:ale_fix_on_save = 1
 
-let g:ale_rust_analyzer_executable = '/home/kartheek/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rust-analyzer'
+let g:ale_c_clangformat_style_option = '{ BasedOnStyle: LLVM, IndentWidth: 4 }'
 
 "------------------------------------------------------------
 " vim-plug
@@ -178,6 +178,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-surround'
     Plug 'jiangmiao/auto-pairs'
     Plug 'sheerun/vim-polyglot'
+    Plug 'junegunn/rainbow_parentheses.vim'
 
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
@@ -207,7 +208,8 @@ let NERDTreeQuitOnOpen=1
 colorscheme molokai
 
 " ALE
-nnoremap <leader>r :ALERename<CR>
+nnoremap <leader>ar :ALERename<CR>
+nnoremap <leader>af :ALEFix<CR>
 
 "------------------------------------------------------------
 

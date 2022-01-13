@@ -12,7 +12,7 @@ COMPLETION_WAITING_DOTS="true"
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM="$DOTFILES/zsh/custom"
 
-plugins=(fzf cargo rust rustup ripgrep)
+plugins=(fzf rust ripgrep zoxide)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -22,4 +22,6 @@ export EDITOR='vim'
 if type pyenv &> /dev/null; then
    path=($(pyenv root)/shims $path)
 fi
+path=($HOME/.local/bin $path)
+
 export PATH
