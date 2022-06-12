@@ -145,6 +145,14 @@ nnoremap <C-L> :nohl<CR><C-L>
 
 let mapleader=","
 
+if has("nvim-0.5.0") || has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  "set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
+set termguicolors
 
 " PLUGIN SETTINGS - BEFORE
 
@@ -154,8 +162,7 @@ set noshowmode
 " ALE
 let g:ale_completion_enabled = 1
 let g:ale_linters = {
-\  'rust': ['analyzer', 'cargo', 'rustc'],
-\  'c': ['clangd'],
+\  'rust': ['analyzer', 'cargo']
 \}
 let g:ale_fixers = {
 \  'rust': ['rustfmt'],
@@ -177,7 +184,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'itchyny/lightline.vim'
     Plug 'tpope/vim-surround'
     Plug 'jiangmiao/auto-pairs'
-    Plug 'sheerun/vim-polyglot'
+    "Plug 'sheerun/vim-polyglot'   " weird indentation issues with C
     Plug 'junegunn/rainbow_parentheses.vim'
 
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -187,9 +194,11 @@ call plug#begin('~/.vim/plugged')
     Plug 'dense-analysis/ale'
     Plug 'rust-lang/rust.vim'
     Plug 'sevko/vim-nand2tetris-syntax'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
     " misc
     Plug 'vimwiki/vimwiki'
+    Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 
     " Colorschemes
     Plug 'tomasr/molokai'
@@ -202,14 +211,20 @@ call plug#end()
 
 " NERDTree
 nnoremap <C-e> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen=1
 
 " molokai
 colorscheme molokai
 
+" Coc
+nmap <leader>r <Plug>(coc-rename)
+nmap <leader>f <Plug>(coc-format)
+
 " ALE
-nnoremap <leader>ar :ALERename<CR>
 nnoremap <leader>af :ALEFix<CR>
+nnoremap <leader>ar :ALERename<CR>
+let g:ale_disable_lsp = 1
 
 "------------------------------------------------------------
 
