@@ -1,3 +1,20 @@
 {
-    "diagnostic.displayByAle": true
+    "inlayHint.enable": false,
+    "diagnostic.displayByAle": true,
+    "languageserver": {
+        "ccls": {
+            "command": "ccls",
+            "args": ["--log-file=/tmp/ccls.log"],
+            "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
+            "rootPatterns": ["compile_commands.json", ".ccls-root"],
+            "initializationOptions": {
+                "cache": {
+                    "directory": "/tmp/ccls"
+                },
+                "client": {
+                    "snippetSupport": true
+                },
+            }
+        }
+    },
 }

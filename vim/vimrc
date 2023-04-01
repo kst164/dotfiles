@@ -137,6 +137,8 @@ map Y y$
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
 
+" copy vim register to wayland clipboard
+nnoremap <C-?> :call system("wl-copy", @")<CR>
 
 "------------------------------------------------------------
 "------------------------------------------------------------
@@ -162,7 +164,8 @@ set noshowmode
 " ALE
 let g:ale_completion_enabled = 1
 let g:ale_linters = {
-\  'rust': ['analyzer', 'cargo']
+\  'rust': ['analyzer', 'cargo'],
+\  'java': []
 \}
 let g:ale_fixers = {
 \  'rust': ['rustfmt'],
@@ -170,7 +173,8 @@ let g:ale_fixers = {
 \  'c': ['clang-format'],
 \  'javascript': ['eslint', 'prettier'],
 \  'typescript': ['eslint', 'prettier'],
-\  'typescriptreact': ['eslint', 'prettier']
+\  'typescriptreact': ['eslint', 'prettier'],
+\  'html': ['prettier']
 \}
 
 let g:ale_c_clangformat_style_option = '{ BasedOnStyle: LLVM, IndentWidth: 4 }'
@@ -184,7 +188,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'itchyny/lightline.vim'
     Plug 'tpope/vim-surround'
     Plug 'jiangmiao/auto-pairs'
-    "Plug 'sheerun/vim-polyglot'   " weird indentation issues with C
+    Plug 'sheerun/vim-polyglot'   " weird indentation issues with C
     Plug 'junegunn/rainbow_parentheses.vim'
 
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -195,6 +199,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'rust-lang/rust.vim'
     Plug 'sevko/vim-nand2tetris-syntax'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'github/copilot.vim'
 
     " misc
     Plug 'vimwiki/vimwiki'
@@ -218,21 +223,27 @@ let NERDTreeQuitOnOpen=1
 colorscheme molokai
 
 " Coc
-nmap <leader>r <Plug>(coc-rename)
-nmap <leader>f <Plug>(coc-format)
+nmap <leader>dr <Plug>(coc-rename)
+nmap <leader>df <Plug>(coc-format)
+nmap <leader>dgd <Plug>(coc-definition)
+nmap <leader>dca <Plug>(coc-codeaction-cursor)
+vmap <leader>dca <Plug>(coc-codeaction-selected)
 
 " ALE
 nnoremap <leader>af :ALEFix<CR>
 nnoremap <leader>ar :ALERename<CR>
+nnoremap <leader>ad :ALEDetail<CR>
+nnoremap <leader>aca :ALECodeAction<CR>
 let g:ale_disable_lsp = 1
+"let g:ale_cursor_detail = 1
+let g:ale_detail_to_floating_preview = 1
+let g:ale_close_preview_on_insert = 1
 
 "------------------------------------------------------------
 
 set scrolloff=15
 
 " Folding (collapsing) lines
-set foldmethod=syntax   
-set foldnestmax=10
+set foldmethod=indent
 set nofoldenable
 set foldlevel=2
-
