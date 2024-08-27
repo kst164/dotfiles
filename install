@@ -13,8 +13,16 @@ fi
 
 ZSH=$BASE/zsh/omz RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-# F on macOS should be T on Linux
-ln -sTfv $BASE/vim ~/.vim
-ln -sTfv $BASE/zsh/zshrc ~/.zshrc
+NVIM_CONFIG_DIR=${XDG_CONFIG_HOME:-$HOME/.config}/nvim
+NVIM_DATA_DIR=${XDG_DATA_HOME:-$HOME/.local/share}/nvim
+
+# T on Linux should be F on macOS
+ln -sTfv $BASE/vim $HOME/.vim
+ln -sTfv $BASE/nvim $NVIM_CONFIG_DIR
+ln -sTfv $BASE/zsh/zshrc $HOME/.zshrc
+
+mkdir -p $NVIM_DATA_DIR/site/autoload
+cp $BASE/vim/autoload/plug.vim $NVIM_DATA_DIR/site/autoload/plug.vim
 
 vim +PlugInstall +qall
+nvim +PlugInstall +qall
