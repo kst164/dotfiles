@@ -1,0 +1,27 @@
+# Path to omz
+export ZSH="$DOTFILES/zsh/omz"
+
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+# DISABLE_AUTO_UPDATE="true"
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+COMPLETION_WAITING_DOTS="true"
+
+# Would you like to use another custom folder than $ZSH/custom?
+ZSH_CUSTOM="$DOTFILES/zsh/custom"
+
+plugins=(fzf rust ripgrep zoxide)
+
+source $ZSH/oh-my-zsh.sh
+
+
+export EDITOR='vim'
+
+if type pyenv &> /dev/null; then
+   path=($(pyenv root)/shims $path)
+fi
+path=($HOME/.local/bin $path)
+
+export PATH

@@ -13,6 +13,9 @@ fi
 
 ZSH=$BASE/zsh/omz RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+# clone powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $BASE/zsh/omz/custom/themes/powerlevel10k
+
 NVIM_CONFIG_DIR=${XDG_CONFIG_HOME:-$HOME/.config}/nvim
 NVIM_DATA_DIR=${XDG_DATA_HOME:-$HOME/.local/share}/nvim
 

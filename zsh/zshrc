@@ -1,7 +1,15 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Path to omz
 export ZSH="$DOTFILES/zsh/omz"
 
-ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel10k/powerlevel10k"
+#ZSH_THEME="robbyrussell"
 
 # DISABLE_AUTO_UPDATE="true"
 # export UPDATE_ZSH_DAYS=13
@@ -12,16 +20,19 @@ COMPLETION_WAITING_DOTS="true"
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM="$DOTFILES/zsh/custom"
 
-plugins=(fzf rust ripgrep zoxide)
+plugins=(fzf rust zoxide gh)
 
 source $ZSH/oh-my-zsh.sh
 
-
-export EDITOR='vim'
+export CHROME_EXECUTABLE=chromium-browser # for flutter
+export EDITOR='nvim'
 
 if type pyenv &> /dev/null; then
    path=($(pyenv root)/shims $path)
 fi
-path=($HOME/.local/bin $path)
+path=($HOME/.local/bin $HOME/code/tools/flutter/bin $path)
 
 export PATH
+
+# To customize prompt, run `p10k configure` or edit $DOTFILES/zsh/.p10k.zsh.
+[[ ! -f $DOTFILES/zsh/p10k.zsh ]] || source $DOTFILES/zsh/p10k.zsh
