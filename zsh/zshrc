@@ -24,13 +24,12 @@ plugins=(fzf rust zoxide gh)
 
 source $ZSH/oh-my-zsh.sh
 
-export CHROME_EXECUTABLE=chromium-browser # for flutter
 export EDITOR='nvim'
 
 if type pyenv &> /dev/null; then
    path=($(pyenv root)/shims $path)
 fi
-path=($HOME/.local/bin $HOME/code/tools/flutter/bin $path)
+path=($HOME/.local/bin $path)
 
 export PATH
 

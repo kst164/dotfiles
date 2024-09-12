@@ -2,10 +2,6 @@ cheat() {
   curl https://cheat.sh/$1
 }
 
-hsim() {
-  sh ~/code/courses/nand2tetris/tools/HardwareSimulator.sh $1
-}
-
 # IITH vpn
 wgup() {
   wg-quick up wg0
@@ -19,8 +15,6 @@ vi() {
   echo "NO"
   return 1
 }
-
-alias vim="vi"
 
 export EDITOR=nvim
 
@@ -42,14 +36,5 @@ zshaliases() {
 
 alias nview="nvim -R"
 alias open="xdg-open"
-
 alias codium="codium --enable-features=UseOzonePlatform --ozone-platform=wayland"
-alias studio="~/code/tools/android-studio/bin/studio.sh"
-
-alias ripes="~/code/tools/Ripes-v2.2.5-linux-x86_64.AppImage"
-
 alias cb="flatpak run app.getclipboard.Clipboard"
-
-ripes-run-asm() {
-  ripes --mode cli --src "$1" -t asm --proc RV64_SS --regs
-}
